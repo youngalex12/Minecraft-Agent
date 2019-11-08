@@ -1,0 +1,34 @@
+player.onItemInteracted(Item.SpiderEye, function () {
+    agent.teleportToPlayer()
+    agent.teleport(positions.create(0, 0, 0), CompassDirection.South)
+    for (let index = 0; index < 1; index++) {
+        agent.destroy(SixDirection.Down)
+        agent.collectAll()
+        agent.move(SixDirection.Down, 1)
+        for (let index = 0; index < 8; index++) {
+            player.runChatCommand("Mine")
+        }
+    }
+})
+player.onChat("Mine", function (num1) {
+    for (let index = 0; index < 16; index++) {
+        agent.destroy(SixDirection.Forward)
+        agent.collectAll()
+        agent.move(SixDirection.Forward, 1)
+    }
+    agent.turn(TurnDirection.Left)
+    agent.destroy(SixDirection.Forward)
+    agent.collectAll()
+    agent.move(SixDirection.Forward, 1)
+    agent.turn(TurnDirection.Left)
+    for (let index = 0; index < 16; index++) {
+        agent.destroy(SixDirection.Forward)
+        agent.collectAll()
+        agent.move(SixDirection.Forward, 1)
+    }
+    agent.turn(TurnDirection.Right)
+    agent.destroy(SixDirection.Forward)
+    agent.collectAll()
+    agent.move(SixDirection.Forward, 1)
+    agent.turn(TurnDirection.Right)
+})
